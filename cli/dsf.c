@@ -82,11 +82,6 @@ int ParseDsfHeaderConfig (FILE *infile, char *infilename, char *fourcc, WavpackC
     if (debug_logging_mode)
         error_line ("file header lengths = %lld, %lld, %lld", file_chunk.ckSize, file_chunk.fileSize, file_chunk.metaOffset);
 
-    if (infilesize && !(config->qmode & QMODE_IGNORE_LENGTH) &&
-        file_chunk.fileSize && file_chunk.fileSize + 1 && file_chunk.fileSize != infilesize) {
-            error_line ("%s is not a valid .DSF file (by total size)!", infilename);
-            return WAVPACK_SOFT_ERROR;
-    }
 #endif
 
     if (config->channel_mask || (config->qmode & QMODE_CHANS_UNASSIGNED)) {
